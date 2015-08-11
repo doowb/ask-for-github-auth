@@ -37,7 +37,7 @@ ask(function (err, creds) {
 
 ## Related projects
 
-* [ask](https://github.com/divshot/ask): A simple, chainable way to construct HTTP requests in Node or the browser
+* [ask-once](https://github.com/doowb/ask-once): Only ask a question one time and store the answer.
 * [data-store](https://github.com/jonschlinkert/data-store): Easily get, set and persist config data.
 * [inquirer](https://github.com/sboudrias/Inquirer.js#readme): A collection of common interactive command line user interfaces.
 * [question-cache](https://github.com/jonschlinkert/question-cache): A wrapper around inquirer that makes it easy to create and selectively reuse questions.

@@ -32,7 +32,7 @@
   "verb": {
     "related": {
       "list": [
-        "ask",
+        "ask-once",
         "question-cache",
         "inquirer",
         "data-store"
