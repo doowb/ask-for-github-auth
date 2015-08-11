@@ -16,7 +16,7 @@ var ask = require('ask-for-github-auth');
 
 ## API
 
-### [askForGithubAuth](index.js#L53)
+### [askForGithubAuth](index.js#L64)
 
 Prompt a user for their github authentication credentials. Save the answer so they're only asked once.
 
