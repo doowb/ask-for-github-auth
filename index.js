@@ -6,32 +6,43 @@
  */
 
 'use strict';
-var inquirer = require('inquirer');
-var DataStore = require('data-store');
-var Questions = require('question-cache');
 
-var store = new DataStore('ask-for-github-auth.' + module.parent.name);
-var questions = new Questions({inquirer: inquirer});
-var ask = require('ask-once')(questions, store);
 
-questions.set('github-auth.type', {
-  type: 'list',
-  choices: [
-    {name: 'OAuth token', value: 'oauth'},
-    {name: 'Username/Password', value: 'basic'}
-  ],
-  message: 'How would you like to authenticate with github?'
-});
+var store, questions, ask;
 
-questions.set('github-auth.oauth', 'Token');
-questions.set('github-auth.basic.username', {
-  message: 'Username',
-  default: 'undefined'
-});
-questions.set('github-auth.basic.password', {
-  message: 'Password',
-  type: 'password'
-});
+function loadQuestions () {
+  var path = require('path');
+  var inquirer = require('inquirer');
+  var DataStore = require('data-store');
+  var Questions = require('question-cache');
+  var name = (typeof module.parent === 'undefined' ? module.id : module.parent.id);
+  name = path.resolve(name);
+  name = path.basename(name, path.extname(name));
+
+  store = new DataStore('ask-for-github-auth.' + name);
+  questions = new Questions({inquirer: inquirer});
+
+  ask = require('ask-once')(questions, store);
+
+  questions.set('github-auth.type', {
+    type: 'list',
+    choices: [
+      {name: 'OAuth token', value: 'oauth'},
+      {name: 'Username/Password', value: 'basic'}
+    ],
+    message: 'How would you like to authenticate with github?'
+  });
+
+  questions.set('github-auth.oauth', 'Token');
+  questions.set('github-auth.basic.username', {
+    message: 'Username',
+    default: 'undefined'
+  });
+  questions.set('github-auth.basic.password', {
+    message: 'Password',
+    type: 'password'
+  });
+}
 
 /**
  * Prompt a user for their github authentication credentials.
@@ -51,6 +62,7 @@ questions.set('github-auth.basic.password', {
  */
 
 function askForGithubAuth (options, cb) {
+  loadQuestions();
   if (typeof options === 'function') {
     cb = options;
     options = {};
