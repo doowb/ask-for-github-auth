@@ -1,0 +1,28 @@
+{
+  "name": "ask-for-github-auth",
+  "description": "Prompt a user for their github authentication credentials and save the results.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/doowb/ask-for-github-auth",
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "repository": "doowb/ask-for-github-auth",
+  "bugs": {
+    "url": "https://github.com/doowb/ask-for-github-auth/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "keywords": []
+}
