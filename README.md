@@ -1,49 +1,70 @@
-# ask-for-github-auth [![NPM version](https://badge.fury.io/js/ask-for-github-auth.svg)](http://badge.fury.io/js/ask-for-github-auth)  [![Build Status](https://travis-ci.org/doowb/ask-for-github-auth.svg)](https://travis-ci.org/doowb/ask-for-github-auth) 
+# ask-for-github-auth [![NPM version](https://badge.fury.io/js/ask-for-github-auth.svg)](http://badge.fury.io/js/ask-for-github-auth)  [![Build Status](https://travis-ci.org/doowb/ask-for-github-auth.svg)](https://travis-ci.org/doowb/ask-for-github-auth)
 
 > Prompt a user for their github authentication credentials and save the results.
 
-## Install with [npm](npmjs.org)
+Install with [npm](https://www.npmjs.com/)
 
-```bash
-npm i ask-for-github-auth --save
+```sh
+$ npm i ask-for-github-auth --save
 ```
 
 ## Usage
 
 ```js
-var askForGithubAuth = require('ask-for-github-auth');
+var ask = require('ask-for-github-auth');
 ```
 
 ## API
-<!-- add a path or glob pattern for files with code comments to use for docs  -->
-{%= apidocs("index.js") %}
 
-## Related projects
-<!-- add an array of related projects, then un-escape the helper -->
-{%= related([]) %}  
+### [askForGithubAuth](index.js#L53)
 
-## Running tests
-Install dev dependencies.
+Prompt a user for their github authentication credentials. Save the answer so they're only asked once.
 
-```bash
-npm i -d && npm test
+**Params**
+
+* `options` **{Object}**: Options to pass to [ask-once]
+* `cb` **{Function}**: Callback function returning either an error or authentication credentials
+
+**Example**
+
+```js
+ask(function (err, creds) {
+  console.log(creds);
+  //=>    {type: 'oauth', token: '123456'}
+  //=> or {type: 'basic', username: 'doowb', password: 'password'}
+});
 ```
 
+## Related projects
+
+* [ask](https://github.com/divshot/ask): A simple, chainable way to construct HTTP requests in Node or the browser
+* [data-store](https://github.com/jonschlinkert/data-store): Easily get, set and persist config data.
+* [inquirer](https://github.com/sboudrias/Inquirer.js#readme): A collection of common interactive command line user interfaces.
+* [question-cache](https://github.com/jonschlinkert/question-cache): A wrapper around inquirer that makes it easy to create and selectively reuse questions.
+
+## Running tests
+
+Install dev dependencies:
+
+```sh
+$ npm i -d && npm test
+```
 
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/ask-for-github-auth/issues)
 
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/ask-for-github-auth/issues/new)
 
 ## Author
 
 **Brian Woodward**
- 
+
 + [github/doowb](https://github.com/doowb)
-+ [twitter/doowb](http://twitter.com/doowb) 
++ [twitter/doowb](http://twitter.com/doowb)
 
 ## License
+
 Copyright © 2015 Brian Woodward
-Released under the MIT license
+Released under the MIT license.
 
 ***
 
