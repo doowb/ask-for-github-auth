@@ -13,6 +13,7 @@ var store, questions, ask;
 function loadQuestions () {
   var path = require('path');
   var inquirer = require('inquirer');
+  var username = require('git-username');
   var DataStore = require('data-store');
   var Questions = require('question-cache');
   var name = (typeof module.parent === 'undefined' ? module.id : module.parent.id);
@@ -36,7 +37,7 @@ function loadQuestions () {
   questions.set('github-auth.oauth', 'Token');
   questions.set('github-auth.basic.username', {
     message: 'Username',
-    default: 'undefined'
+    default: username()
   });
   questions.set('github-auth.basic.password', {
     message: 'Password',
