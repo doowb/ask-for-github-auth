@@ -14,15 +14,9 @@ function loadQuestions () {
   var path = require('path');
   var inquirer = require('inquirer');
   var username = require('git-username');
-  var DataStore = require('data-store');
   var Questions = require('question-cache');
-  var name = (typeof module.parent === 'undefined' ? module.id : module.parent.id);
-  name = path.resolve(name);
-  name = path.basename(name, path.extname(name));
 
-  store = new DataStore('ask-for-github-auth.' + name);
   questions = new Questions({inquirer: inquirer});
-
   ask = require('ask-once')(questions, store);
 
   questions.set('github-auth.type', {
