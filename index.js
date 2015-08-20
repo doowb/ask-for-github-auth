@@ -8,9 +8,9 @@
 'use strict';
 
 
-var store, questions, ask;
+var questions, ask;
 
-function loadQuestions () {
+function loadQuestions (store) {
   var path = require('path');
   var inquirer = require('inquirer');
   var username = require('git-username');
@@ -51,18 +51,23 @@ function loadQuestions () {
  * });
  * ```
  *
- * @param  {Object} `options` Options to pass to [ask-once]
+ * @param  {Object} `options` Options to pass to [ask-once][]
+ * @param  {String} `options.store` a [data-store][] instance or name that can be passed to [ask-once][]
  * @param  {Function} `cb` Callback function returning either an error or authentication credentials
  * @api public
  */
 
 function askForGithubAuth (options, cb) {
-  loadQuestions();
   if (typeof options === 'function') {
     cb = options;
     options = {};
   }
   options = options || {};
+  options.store = options.store || 'default';
+  if (typeof options.store === 'string') {
+    options.store = 'for-github-auth.' + options.store;
+  }
+  loadQuestions(options.store);
 
   var creds = {};
   ask('github-auth.type', options, function (err, type) {
