@@ -17,7 +17,7 @@ function loadQuestions (store) {
   var Questions = require('question-cache');
 
   questions = new Questions({inquirer: inquirer});
-  ask = require('ask-once')(questions, store);
+  ask = require('ask-once')({questions: questions, store: store});
 
   questions.set('github-auth.type', {
     type: 'list',
@@ -70,11 +70,11 @@ function askForGithubAuth (options, cb) {
   loadQuestions(options.store);
 
   var creds = {};
-  ask('github-auth.type', options, function (err, type) {
+  ask.once('github-auth.type', options, function (err, type) {
     if (err) return cb(err);
 
     creds.type = type;
-    ask(['github-auth', type].join('.'), options, function (err, answer) {
+    ask.once(['github-auth', type].join('.'), options, function (err, answer) {
       if (err) return cb(err);
 
       if (type === 'oauth') {

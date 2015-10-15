@@ -24,10 +24,10 @@
     "mocha": "*"
   },
   "dependencies": {
-    "ask-once": "^0.3.0",
+    "ask-once": "^0.5.1",
     "git-username": "^0.4.0",
-    "inquirer": "^0.9.0",
-    "question-cache": "^0.2.2"
+    "inquirer": "^0.10.1",
+    "question-cache": "^0.3.0"
   },
   "verb": {
     "related": {
